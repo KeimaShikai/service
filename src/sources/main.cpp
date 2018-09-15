@@ -7,9 +7,9 @@
 
 int main()
 {
+    char buf[1024];
     int sock, listener;
     struct sockaddr_in addr;
-    char buf[1024];
     int bytes_read;
 
     //creating socket
@@ -44,12 +44,12 @@ int main()
 
         while(1)
         {
-            bytes_read = recv(sock, buf, 1024, 0);
+	    bytes_read = recv(sock, buf, 1024, 0);
             if (bytes_read <= 0) break;
-            printf(buf);
+	    for (int i = 0; i < bytes_read; ++i) printf("%c", buf[i]);
         }
 
-        //closing socket
+	//closing socket
         close(sock);
     }
     return 0;
