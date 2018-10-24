@@ -33,20 +33,44 @@ int main()
     //listening and queue organization
     listen(listener, 1);
 
+    char message_1[] =
+	"Greetings, COMRADE!\n"
+	"Type HELP to find out what "
+	"exectly you can do with "
+	"our great application!\n";
+
+    char message_2[] = "This is a place for a future help message!\n";
+
     while(1)
     {
         sock = accept(listener, NULL, NULL);
+
         if (sock < 0)
         {
             perror("Accept error!\n");
             exit(3);
         }
 
+	send(sock, message_1, sizeof(message_1), 0);
+
         while(1)
         {
+            char cur_word[256];
 	    bytes_read = recv(sock, buf, 1024, 0);
             if (bytes_read <= 0) break;
-	    for (int i = 0; i < bytes_read; ++i) printf("%c", buf[i]);
+	    //TODO change from if to case of
+            switch (buf[0])
+	    {
+		case 'H':
+		{
+		    for (int i = 0; i < 4; ++i) cur_word[i] = buf[i];
+		    if (strcmp(cur_word, "HELP") == 0)
+			send(sock, message_2, sizeof(message_2), 0);
+		    break;
+		}
+	    }
+	    //if (strncmp(buf, "HELP", sizeof("HELP")) == 0)
+	    //for (int i = 0; i < bytes_read; ++i) printf("%c", buf[i]);
         }
 
 	//closing socket
