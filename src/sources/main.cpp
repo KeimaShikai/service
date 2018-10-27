@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "messages.h"
 
 int main()
 {
@@ -33,14 +34,6 @@ int main()
     //listening and queue organization
     listen(listener, 1);
 
-    char message_1[] =
-	"Greetings, COMRADE!\n"
-	"Type HELP to find out what "
-	"exectly you can do with "
-	"our great application!\n";
-
-    char message_2[] = "This is a place for a future help message!\n";
-
     while(1)
     {
         sock = accept(listener, NULL, NULL);
@@ -58,7 +51,6 @@ int main()
             char cur_word[256];
 	    bytes_read = recv(sock, buf, 1024, 0);
             if (bytes_read <= 0) break;
-	    //TODO change from if to case of
             switch (buf[0])
 	    {
 		case 'H':
