@@ -23,4 +23,4 @@ cmake CMakeLists.txt && make
 ***
 
 Note that the service is working on 8888 port by default.
-You can use nc or telnet to connect to this piece of trash.
+You can use nc or telnet to connect to this piece of communism.
