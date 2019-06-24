@@ -5,8 +5,9 @@ project(X)
 list (APPEND X_HEADERS "src/headers")
 
 #src
-list (APPEND X_SOURCES "src/headers/messages.h")
-list (APPEND X_SOURCES "src/sources/main.cpp")
+list (APPEND X_SOURCES "src/headers/CMain.h")
+list (APPEND X_SOURCES "src/sources/CMain.cpp")
+list (APPEND X_SOURCES "src/main.cpp")
 
 include_directories(${X_HEADERS})
 
