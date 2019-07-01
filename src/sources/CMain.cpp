@@ -1,3 +1,4 @@
+// Костылёк для ревью
 #include "CMain.h"
 
 CMain::CMain()
